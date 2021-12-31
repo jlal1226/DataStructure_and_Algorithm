@@ -6,7 +6,10 @@ public class IntStackTester {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         IntStack s = new IntStack(64);
-
+        System.out.println("================================");
+        System.out.println("        IntStackTester");
+        System.out.println("================================");
+        System.out.println();
         while(true){
             System.out.println("현재 데이터 수 : " + s.size() + "/" + s.capacity());
             System.out.print("(1) push (2) pop (3) peek (4) dump (0) exit > ");
