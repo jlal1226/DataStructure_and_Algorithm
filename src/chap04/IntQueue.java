@@ -94,7 +94,7 @@ public class IntQueue {
 
     // 큐의 모든 데이터를 front -> rear 순서로 출력
     public void dump() {
-        if(num >= 0)
+        if(num <= 0)
             System.out.println("큐가 비었습니다.");
         else {
             for(int i =0; i < num; i++){
