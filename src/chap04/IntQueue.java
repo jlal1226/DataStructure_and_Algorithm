@@ -61,6 +61,7 @@ public class IntQueue {
         return que[front];
     }
 
+    // 큐에서 x를 검색하여 index를 반환한다.
     public int indexOf(int x) {
         for(int i = 0; i < num; i++){
             int index = (i + front) % max;
@@ -69,6 +70,15 @@ public class IntQueue {
             }
         }
 
+        return -1;
+    }
+
+    // 큐에서 몇번째에 있는가
+    public int search(int x){
+        for(int i = 0; i < num; i++){
+            if (que[(i + front) % max] == x) // 검색성공
+                return i + 1;
+        }
         return -1;
     }
 
