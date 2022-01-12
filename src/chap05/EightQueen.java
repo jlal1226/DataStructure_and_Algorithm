@@ -21,15 +21,15 @@ public class EightQueen {
     // i열에 알맞은 위치에 퀸을 배치
     // 각은 행에 퀸을 배치하지 않도록 flag 활용
     static void set(int i) {
-        for (int j = 0; j < 8; j++) {
-            if (!flag_a[i] && !flag_b[i + j] && !flag_c[i - j + 7]){
-                pos[i] = j;
+        for (int j = 0; j < 8; j++){
+            if (!flag_a[j] && !flag_b[i + j] && !flag_c[i - j + 7]){
+                pos[j] = i;
                 if (i == 7)
                     print();
                 else {
-                    flag_a[i] = flag_b[i + j] = flag_c[i - j + 7] = true; // j행에 퀸을 배치하면
-                    set(i+1);
-                    flag_a[i] = flag_b[i + j] = flag_c[i - j + 7] = false;
+                    flag_a[j] = flag_b[i + j] = flag_c[i - j + 7] = true;
+                    set(i + 1);
+                    flag_a[j] = flag_b[i + j] = flag_c[i - j + 7] = false;
                 }
             }
         }
