@@ -6,22 +6,30 @@ public class EightQueenUI {
     static boolean[] flag_b = new boolean[15]; // 오른쪽 위 대각선에 퀸이 배치됬는지 체크
     static boolean[] flag_c = new boolean[15]; // 오른쪽 아래 대각선엔 퀸이 배치됬는지 체크
     static int cnt = 1;
+
     static void print() {
+        System.out.println("================================");
         System.out.println("["+cnt++ + "번째 조합]");
+        System.out.print("   ");
         for (int i = 0; i < 8; i++){
+            System.out.print(i+"  ");
+        }
+        System.out.println();
+        for (int i = 0; i < 8; i++){
+            System.out.print(i+"  ");
             for (int j = 0; j < 8; j++){
-                if (pos[i] == j)
+                if (pos[j] == i)
                     System.out.print("■  ");
                 else
                     System.out.print("□  ");
             }
             System.out.println();
         }
+        System.out.printf("\n위치 : [");
         for (int i = 0; i < 8; i++){
             System.out.printf("%2d", pos[i]);
         }
-        System.out.println();
-        System.out.println();
+        System.out.printf(" ]\n\n");
 
     }
 
