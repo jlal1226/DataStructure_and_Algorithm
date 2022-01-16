@@ -32,6 +32,11 @@ public class QuickSort {
             quickSort(arr, pl, right);
     }
 
+    // 연습문제 Q.10 -> 매개변수로 n만 받아서 quickSort() 구현하기
+    static void quickSort(int[] arr, int n) {
+        quickSort(arr, 0, n - 1);
+    }
+
     public static void main(String[] args) {
         Random rand = new Random();
         Scanner scan = new Scanner(System.in);
@@ -53,7 +58,7 @@ public class QuickSort {
         // 배열 출력
         System.out.println("전 : " + Arrays.toString(arr));
         // 선택 정렬
-        quickSort(arr, 0, n - 1);
+        quickSort(arr, n);
         // 배열 출력
         System.out.println("후 : " + Arrays.toString(arr));
     }
