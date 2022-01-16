@@ -1,11 +1,12 @@
 package chap06;
 
+import chap04.IntStack;
+
 import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 
-// 퀵정렬
-// 시간 복잡도 : 평군 O(n log n) -> 파티션을 나누는 횟수는 n번 -> 데이터가 절반씩 줄어들음
+// 비재귀적으로 구현한 퀵 정렬
 public class QuickSort2 {
     static void swap(int[] a, int index1, int index2) {
         int tmp = a[index1];
@@ -13,29 +14,41 @@ public class QuickSort2 {
         a[index2] = tmp;
     }
 
+    // 스택을 활용항 비재귀적 퀵 정렬
     static void quickSort(int[] arr, int left, int right) {
-        int pl = left;
-        int pr = right;
-        int pivot = arr[(pl + pr) / 2]; // 배열의 중앙값
+        // 스택 2개가 붙어있다고 생각하자
+        IntStack lStack = new IntStack(right - left + 1);
+        IntStack rStack = new IntStack(right - left + 1);
+        lStack.push(left);
+        rStack.push(right);
 
-        // 퀵 정렬 분할 과정 출력
-        System.out.printf("arr[%d] ~ arr[%d] : [ ", left, right);
-        for (int i = pl; i <= pr; i++)
-            System.out.print(arr[i] + " ");
-        System.out.println("]  pivot : " + pivot);
+        // 스택이 비어있으면 종료
+        while (!lStack.isEmpty()) {
+            // 스택에서 커서 값을 받아옴
+            int pl = left =  lStack.pop();
+            int pr = right = rStack.pop();
+            int pivot = arr[(pl + pl) / 2];
 
-        // 그룹 나누기
-        do{
-            while (arr[pl] < pivot) pl++; // pl 커서를 오른쪽으로 스캔
-            while (arr[pr] > pivot) pr--; // pr 커서를 왼쪽으로 스캔
-            if(pl <= pr) // 값 교환 후 커서 이동
-                swap(arr, pl++, pr--);
-        }while (pl <= pr); // pl과 pr이 교차하면 -> 그룹이 2개로 나누어짐
+            // 그룹 나누기
+            do {
+                while (arr[pl] < pivot) pl++;
+                while (pivot < arr[pr]) pr--;
+                if (pl <= pr)
+                    swap(arr, pl++, pr--);
+            } while (pl <= pr);
 
-        if (left < pr) // 재귀를 통해 분리된 왼쪽 그룹 정렬 -> 그룹의 개수가 1개인 경우 중지
-            quickSort(arr, left, pr);
-        if (pl < right) // 재귀를 통해 분리된 오른쪽 그룹 정렬 -> 그룹의 개수가 1개인 경우 중지
-            quickSort(arr, pl, right);
+            // 스택에 왼쪽 그룹의 시작과 끝 index 저장
+            if (left < pr) {
+                lStack.push(left);
+                rStack.push(pr);
+            }
+            // 스택에 오른쪽 그룹의 시작과 끝 index 저장
+            if (pl < right) {
+                lStack.push(pl);
+                rStack.push(right);
+            }
+            // 반복문에 의해 stack에 저장된 시작과 끝 index를 꺼내서 정렬 수행 -> 비재귀적 퀵 정렬 수행
+        }
     }
 
     // 연습문제 Q.10 -> 매개변수로 n만 받아서 quickSort() 구현하기
