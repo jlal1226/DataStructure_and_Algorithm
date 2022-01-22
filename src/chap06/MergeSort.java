@@ -19,12 +19,14 @@ public class MergeSort {
             __mergeSort(arr, center + 1, right); // 뒷부분
 
             // 배열의 앞부분을 buff[]에 복사
+            // p값은 center - left + 1이 된다.
             for (i = left; i <= center; i++)
                 buff[p++] = arr[i];
             // 배열의 뒷부분과 buff[]의 요소를 비교하면서 작은 요소를 배열 arr에 병합
             while ( i <= right && j < p)
                 arr[k++] = (buff[j] <= arr[i]) ? buff[j++] : arr[i++];
             // buff[]의 나머지 요소를 배열 arr에 복사
+            // 만약  기존 arr[]에 요소가 남아있다면 그냥 둬도 됌 -> 정렬이 되있고 buff[]에 있는 요소보다 큰 값들이기 때문이다.
             while (j < p)
                 arr[k++] = buff[j++];
         }
