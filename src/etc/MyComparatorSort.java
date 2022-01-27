@@ -3,7 +3,6 @@ package etc;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.Random;
-
 class MyInteger{
     int num;
 
@@ -11,8 +10,7 @@ class MyInteger{
         this.num = num;
     }
 }
-
-public class ComparatorSort {
+public class MyComparatorSort {
     public static void main(String[] args) {
         Random rand = new Random();
 
