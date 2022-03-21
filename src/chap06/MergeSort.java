@@ -6,8 +6,9 @@ public class MergeSort {
     static int[] buff;
     static void mergeSort(int[] arr) {
         int len = arr.length;
-        buff = new int[len];
+        buff = new int[len]; // 버퍼 배열 생성
         __mergeSort(arr, 0, len - 1);
+        buff = null; // 버퍼 배열 초기화
     }
 
     static void __mergeSort(int[] arr, int left, int right) {
