@@ -1,4 +1,4 @@
-package chap06;
+package chap06.QuickSort;
 
 import java.util.Arrays;
 import java.util.Random;
