@@ -6,13 +6,13 @@ public class QuickSort_Re {
     private static void quickSort(int[] arr, int left, int right) {
         int pl = left;
         int pr = right;
-        int pivot = arr[(right - left) / 2];
+        int pivot = arr[(pr + pl) / 2]; // 피봇값
 
         do {
-            while (arr[pl] < pivot) {
+            while (arr[pl] < pivot) { // 왼쪽 커서 검색
                 pl++;
             }
-            while (arr[pr] > pivot) {
+            while (arr[pr] > pivot) { // 오른쪽 커서 검색
                 pr--;
             }
             if (pl <= pr) {
