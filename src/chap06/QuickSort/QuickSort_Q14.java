@@ -32,7 +32,7 @@ public class QuickSort_Q14 {
             arr[j] = tmp;
         }
     }
-    // 스택을 활용항 비재귀적 퀵 정렬
+
     static void quickSort(int[] arr, int left, int right) {
         int size = right - left + 1; // 그룹의 요소 개수
 
