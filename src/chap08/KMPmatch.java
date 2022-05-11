@@ -5,8 +5,6 @@ public class KMPmatch {
     KMP법 : 다른 문자를 만나면 패턴을 1칸씩 옮긴 다음 다시 패턴의 처음부터 검사하는 브루트포스법과는 다르게
             중간 검사 결과를 효율적으로 사용하는 알고리즘
     -> 검사했던 위치 결과를 버리지 않고 효율적으로 활용
-
-
      */
     public static void main(String[] args) {
         String txt = "ZABCABXACCADEFABCABDX";
